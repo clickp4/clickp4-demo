@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var design = require('./routes/design');
 
 var app = express();
 
@@ -21,9 +22,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// to use library managed by bower
+app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/design', design);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
