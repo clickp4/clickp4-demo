@@ -1,0 +1,27 @@
+{
+  "name": "clickp4-demo",
+  "description": "",
+  "main": "",
+  "authors": [
+    "zy-sdn <y-zhou16@mails.tsinghua.edu.cn>",
+    "cyz14 <icyz14@163.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "p4"
+  ],
+  "homepage": "https://github.com/clickp4/clickp4-demo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "draw2d": "^6.1.65",
+    "draw2d-shapes": "^1.0.178",
+    "bootstrap": "^3.3.7",
+    "mousetrap": "^1.6.0"
+  }
+}
