@@ -1,8 +1,13 @@
 .workspace
     #navigation.palette
         input#filter(type='text', placeholder='Filter...', autofocus='')
-        #paletteElementsScroll
-            #paletteElements.row
+        div#paletteElementScroll.list-group
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d_circuit_switch_HighLow") Switch 
+            span.badge#draw2d_circuit_switch_HighLow
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d.shape.node.Between") FW
+            span.badge#draw2d.shape.node.Between
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d.shape.node.Between") QoS
+            span.badge#draw2d.shape.node.Between
         #paletteElementsOverlay
     #toolbar.toolbar
         span.group

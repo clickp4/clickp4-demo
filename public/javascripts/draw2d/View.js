@@ -180,13 +180,17 @@ app.View = draw2d.Canvas.extend({
         var type = $(droppedDomNode).data("shape");
         var isAllowed = this.checkLimit(type); 
         if (isAllowed) {
+            if (type === undefined)
+                return;
+
             var figure = eval("new "+type+"();");
-            this.updateRemain(type, -1);
+            // this.updateRemain(type, -1);
+
             // create a command for the undo/redo support
             var command = new draw2d.command.CommandAdd(this, figure, x, y);
             this.getCommandStack().execute(command);
         } else {
-            alert("Usage is limited.");
+            alert("Usage of type " + type + " is limited.");
         }
     },
 
@@ -264,16 +268,21 @@ app.View = draw2d.Canvas.extend({
         this.changed = true;
     },
 
+    // support for some restrictions
+    //
+    checkLimit: function(type) {
+        return true;
+    },
+
     load:function (jsonDocument) {  
         // cleanup the canvas 
         this.clear();
-        this.initRemain();
         var _this = this;
 
         $(jsonDocument).each(function(index, item) {
             // checkLimit
             if (_this.checkLimit(item.type)) {
-                _this.updateRemain(item.type, -1);        
+                // _this.updateRemain(item.type, -1);
             } else {
                 alert("Error: " + item.type + " usage is limited.");
             }

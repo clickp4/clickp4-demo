@@ -102,7 +102,7 @@ input{
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 150px;
+  top: 50px;
   bottom: 100px;
   left: 2px;
   right: 5px;
@@ -110,11 +110,8 @@ input{
 }
 
 #navigation #paletteElementScroll .palette_node_element {
-  margin: 10px;
-  left: 10px;
-  right: 10px;
   width: 100px;
-  display: inline-block;
+  display: block;
 }
 
 #navigation #paletteElementScroll span.badge {
