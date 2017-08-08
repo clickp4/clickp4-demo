@@ -1,7 +1,10 @@
 <html>
 <head>
 
-    <link type="text/css" rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="./bower_components/ionicons/css/ionicons.min.css"/>
+	<link rel="stylesheet" href="./public/stylesheets/visual-editor.css"/>
+	<link rel="stylesheet" href="./public/stylesheets/toolbar-editor.css"/>
 </head>
 
 <body>
@@ -23,25 +26,48 @@
 	</li>
 </ul>
 
-<div class="col-md-4 column">
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="Switch">
+		<div class="workspace">
+			<div class="palette" id="navigation">
+				<input type="text" id="filter" placeholder="Filter..." autofocus>
 
-<p>hello</p>
-</div>
+				<div id="paletteElementsScroll">
+					<div id="paletteElements" class="row">
+					</div>
+				</div>
+				<div id="paletteElementsOverlay"></div>
+			</div>
 
-</div>
+			<div class="toolbar" id="toolbar">
 
-<div class="col-md-8 column">
-	<div class="tab-content">
-		<div class="tab-pane fade in active" id="Switch">
-			<p>
-				Howdy, I'm in Section 1.
-			</p>
+				<!-- <span class="group" id="editorgroup_fileoperations">
+					<span id="editorFileOpen" class="ion-ios-download-outline icon" title="Open circuit"></span>
+					<span id="editorFileSave" class="ion-ios-upload-outline icon"   title="Save circuit"></span>
+				</span> -->
+
+				<span class="group">
+					<span id="editUndo" class="ion-ios-arrow-left icon disabled"></span>
+					<span id="editRedo" class="ion-ios-arrow-right icon disabled"></span>
+				</span>
+			</div>
+
+			<div class="content" id="draw2dCanvasWrapper">
+				<div class="canvas" id="draw2dCanvas" oncontextmenu="return false;">
+				</div>
+
+				<div id="canvas_zoom" class="btn-group">
+					<button type="button" id="canvas_zoom_in"     class="btn highlight">&#8210;</button>
+					<button type="button" id="canvas_zoom_normal" class="btn highlight">100%</button>
+					<button type="button" id="canvas_zoom_out"    class="btn highlight">&#xFF0B</button>
+				</div>
+			</div>
 		</div>
-		<div class="tab-pane fade" id="Topo">
-			<p>
-				I'm in Section 2.
-			</p>
-		</div>
+	</div>
+	<div class="tab-pane fade" id="Topo">
+		<p>
+			I'm in Section 2.
+		</p>
 	</div>
 </div>
 
