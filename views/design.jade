@@ -2,10 +2,56 @@ extend layout
 
 block stylesheets
     include includes/draw2d_css
+    link(rel="stylesheet" href="/stylesheets/visual-editor.css")
+    link(rel="stylesheet" href="/stylesheets/toolbar-editor.css")
 
 block content
-    h1 hello design
-    p Welcome to click p4 design page
+    #layout
+        ul.nav.nav-tabs
+            li.active
+                a(href='#Switch', data-toggle='tab') Switch
+            li
+                a(href='#Topo', data-toggle='tab') Topo
+        .tab-content
+            #Switch.tab-pane.fade.in.active
+                include includes/switch_workspace.jade
+            #Topo.tab-pane.fade
+                include includes/topo_workspace.jade
+
+#json
 
 block addscript
     include includes/draw2d_js
+    script(src="/javascripts/draw2d/Application.js")
+    script(src="/javascripts/draw2d/Palette.js")
+    script(src="/javascripts/draw2d/DropInterceptorPolicy.js")
+    script(src="/javascripts/draw2d/ConnectionRouter.js")
+    script(src="/javascripts/draw2d/View.js")
+    script(src="/javascripts/draw2d/Toolbar.js")
+
+    script.
+        var showJSON = false;
+        $(window).load( function(){
+            app = new app.Application();
+
+            if (showJSON === true) {
+                displayJSON(app.view);
+
+                // add an event listener to the Canvas for change notifications.
+                // We just dump the current canvas document into the DIV
+                //
+                app.view.getCommandStack().addEventListener(
+                function(e){
+                    if(e.isPostChangeEvent()){
+                        displayJSON(app.view);
+                    }
+                });
+            }
+        });
+        
+        function displayJSON(canvas){
+        var writer = new draw2d.io.json.Writer();
+        writer.marshal(canvas, function(json){
+            $("#json").html("<pre>"+JSON.stringify(json,null,2)+"<pre>");
+        });
+        }

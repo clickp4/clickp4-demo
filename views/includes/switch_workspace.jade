@@ -1,0 +1,16 @@
+.workspace
+    #navigation.palette
+        input#filter(type='text', placeholder='Filter...', autofocus='')
+        #paletteElementsScroll
+            #paletteElements.row
+        #paletteElementsOverlay
+    #toolbar.toolbar
+        span.group
+            span#editUndo.ion-ios-arrow-left.icon.disabled
+            span#editRedo.ion-ios-arrow-right.icon.disabled
+    #draw2dCanvasWrapper.content
+        #draw2dCanvas.canvas(oncontextmenu='return false;')
+        #canvas_zoom.btn-group
+            button#canvas_zoom_in.btn.highlight(type='button') ‒
+            button#canvas_zoom_normal.btn.highlight(type='button') 100%
+            button#canvas_zoom_out.btn.highlight(type='button') &#xFF0B
