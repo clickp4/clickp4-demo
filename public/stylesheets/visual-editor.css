@@ -1,0 +1,252 @@
+
+body{
+  font-family:Helvetica, Arial, Verdana, sans-serif;
+  color:#6b6b6b;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.navbar-static-top {
+  margin-bottom: 0px;
+}
+
+.fileinput-button {
+  position: relative;
+  display: inline-block;
+}
+
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+}
+
+input{
+ background: none repeat scroll 0 0 #f8f8f8;
+ border-color: #C6C6C6 #DADADA #EAEAEA;
+ border-radius: 4px 4px 4px 4px;
+ -moz-box-sizing: border-box;
+ padding-left:7px;
+ border-style: solid ;
+ border-width: 1px;
+ vertical-align: middle;
+ height:25px;
+ font-size:14px;
+ line-height:25px;
+}
+
+.row#tabNav {
+    height: 50px;
+}
+
+.row .col-sm-4 .form-inline {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.tab-pane {
+  display: none;
+  padding: 0px;
+  height:100%;
+  position:relative;
+}
+
+#editorTab {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#navigation{
+  position: absolute;
+  padding:0px;
+  margin:0px;
+  width: 250px;
+  top: 0px;
+  bottom: 0px;
+  text-align: center;
+}
+
+#navigation #jumpToVHDL {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+#navigation #filter {
+  top: 90px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  font-size: 20px;
+  left: 5px;
+  height: 40px;
+  width: 190px;
+  border-radius: 2px;
+  outline: none;
+}
+
+#navigation #paletteElementScroll {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 150px;
+  bottom: 100px;
+  left: 2px;
+  right: 5px;
+  overflow: scroll;
+}
+
+#navigation #paletteElementScroll .palette_node_element {
+  margin: 10px;
+  left: 10px;
+  right: 10px;
+  width: 100px;
+  display: inline-block;
+}
+
+#navigation #paletteElementScroll span.badge {
+    margin-left: 10px;
+}
+
+#toolbar{
+  position: absolute;
+  left: 250px;
+  right: 0px;
+  padding:0px;
+  margin:0px;
+  height:60px;
+  background:#EAEFF3; /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cecece', endColorstr='#a8a8a8',GradientType=0 ); /* IE6-9 */
+}
+
+.toolbar label {
+  color: #777;
+  font-weight: 200;
+}
+
+.toolbar .icon {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  padding: 0px;
+}
+
+#toolbar .group {
+  padding-right:20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#toolbar .icon {
+  cursor:pointer;
+  border:1px solid transparent;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color:#070707;
+  font-size:45px;
+}
+
+#toolbar .icon:hover {
+  border: 1px solid #1c9bab;
+}
+.toolbar .icon.disabled {
+  opacity: 0.2;
+  border: 1px solid transparent;
+}
+
+.toolbar .glyphicon {
+    cursor: pointer;
+    border: 1px solid transparent;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color: #070707;
+    font-size: 35px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    /*padding-left: 10px;*/
+}
+
+#draw2dCanvasWrapper {
+  position: absolute;
+  padding:0px;
+  left: 250px;
+  right: 0px;
+  top: 60px;
+  bottom: 100px; /* same as navbar-static-top + row#tabNav height*/
+  overflow:scroll;
+}
+
+#draw2dCanvas {
+  width: 6000px;
+  height: 6000px;
+  background-color:#FAFAFA;
+}
+
+#canvas_zoom {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+}
+#canvas_zoom button {
+  background-color: transparent;
+  font-weight: 300;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid transparent;
+  outline: none;
+}
+#canvas_zoom button:hover {
+  border: 1px solid #1c9bab !important;
+}
+
+#propertypane {
+ padding:0px;
+ margin:0px;
+ width:150px;
+ background-color:#7D7D7D;
+ border-top:0px;
+}
+
+.toolbar_delimiter {
+  margin-left:40px;
+}
+
+
+.palette_node_element{
+ border:1px solid gray;
+ background-color: #f3f3f3;
+ padding:10px;
+ cursor:move;
+ width:80px;
+ margin: 30px auto 30px auto;
+ text-align:center;
+ border-radius: 5px;
+}
+
+.shadow {
+ -moz-box-shadow: 3px 3px 4px #000;
+ -webkit-box-shadow: 3px 3px 4px #000;
+ box-shadow: 3px 3px 4px #000;
+ /* For IE 8 */
+ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+ /* For IE 5.5 - 7 */
+ filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
