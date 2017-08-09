@@ -228,9 +228,9 @@ input{
 
 
 .palette_node_element{
- border:1px solid gray;
- background-color: #f3f3f3;
- padding:10px;
+ border:2px solid gray;
+ background-color: white;
+ padding:22px;
  cursor:move;
  width:80px;
  margin: 30px auto 30px auto;
@@ -246,4 +246,15 @@ input{
  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
  /* For IE 5.5 - 7 */
  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+#preview {
+ border-radius:5px;
+ overflow:auto;
+ position:absolute;
+ top:70px;
+ right:10px;
+ width:150;
+ height:150;
+ border:3px solid gray;
 }
