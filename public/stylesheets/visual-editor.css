@@ -79,10 +79,10 @@ input{
   text-align: center;
 }
 
-#navigation #jumpToVHDL {
-  position: absolute;
-  top: 20px;
-  right: 10px;
+#toolbar #FunctionButton {
+  position: fixed;
+  top: 48px;
+  right: 5px;
 }
 
 #navigation #filter {
