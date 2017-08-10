@@ -2,14 +2,18 @@
     #navigation.palette
         //- input#filter(type='text', placeholder='Filter...', autofocus='')
         div#paletteElementScroll.list-group
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d_circuit_switch_HighLow") Start
-            span.badge#draw2d_circuit_switch_HighLow
+            //- div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d_circuit_switch_HighLow") Start
+            //- span.badge#draw2d_circuit_switch_HighLow
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_forward") Forward
             span.badge#clickp4_forward
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_QoS") QoS
             span.badge#clickp4_QoS
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l2_switch") L2_SW
             span.badge#clickp4_l2_switch
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l3_switch") L3_SW
+            span.badge#clickp4_l3_switch
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_vlan") VLAN
+            span.badge#clickp4_vlan
         #paletteElementsOverlay
     #toolbar.toolbar
         button#FunctionButton.btn.btn-danger.btn-lg Function

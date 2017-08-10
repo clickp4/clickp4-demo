@@ -5,9 +5,9 @@
 // Go to the Designer http://www.draw2d.org               
 // to design your own shape or download user generated    
 //                                                        
-var clickp4_l2_switch = draw2d.SetFigure.extend({            
+var clickp4_l3_switch = draw2d.SetFigure.extend({            
 
-   NAME: "clickp4_l2_switch",
+   NAME: "clickp4_l3_switch",
 
    init:function(attr, setter, getter)
    {
@@ -52,8 +52,8 @@ var clickp4_l2_switch = draw2d.SetFigure.extend({
         shape.data("name","Rectangle");
         
         // Label
-        shape = this.canvas.paper.text(0,0,'L2_SW');
-        shape.attr({"x":25,"y":31.5859375,"text-anchor":"start","text":"L2_SW","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+        shape = this.canvas.paper.text(0,0,'L3_SW');
+        shape.attr({"x":25,"y":31.5859375,"text-anchor":"start","text":"L3_SW","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
         shape.data("name","Label");
         
 
@@ -205,7 +205,7 @@ var clickp4_l2_switch = draw2d.SetFigure.extend({
  *
  *
  */
-clickp4_l2_switch = clickp4_l2_switch.extend({
+clickp4_l3_switch = clickp4_l3_switch.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

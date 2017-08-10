@@ -12,6 +12,7 @@ var clickp4_forward = draw2d.SetFigure.extend({
    init:function(attr, setter, getter)
    {
      this._super( $.extend({stroke:0, bgColor:null, width:100,height:62},attr), setter, getter);
+     this.attr({resizeable:false});
      var port;
      // output_0
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator(101, 50));
