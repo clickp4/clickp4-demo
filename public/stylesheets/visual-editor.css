@@ -185,7 +185,7 @@ input{
   left: 250px;
   right: 0px;
   top: 60px;
-  bottom: 100px; /* same as navbar-static-top + row#tabNav height*/
+  bottom: 50px; /* same as navbar-static-top + row#tabNav height*/
   overflow:scroll;
 }
 
