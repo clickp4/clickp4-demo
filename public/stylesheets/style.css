@@ -1,8 +1,32 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.title-bar {
+    text-align: center;
+    color: #0055ff;
+    font-weight: bold;
+    font-size: 40px;
 }
 
-a {
-  color: #00B7FF;
+.name-bar {
+    text-align: center;
+    color: #0f0f0f;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.affliation-bar {
+    text-align: center;
+    color: #4a6885;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.panel-bar {
+
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.label-text {
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 20px;
 }

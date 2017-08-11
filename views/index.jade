@@ -1,5 +1,75 @@
-extends layout
+extend layout
+
+block stylesheets
+    include includes/draw2d_css
+    link(rel="stylesheet" href="/stylesheets/style.css")
+    link(rel="stylesheet" href="/stylesheets/bootstrap.css")
+    link(rel="stylesheet" href="/stylesheets/visual-editor.css")
+    link(rel="stylesheet" href="/stylesheets/toolbar-editor.css")
+
 
 block content
-  h1= title
-  p Welcome to #{title}
+    p.title-bar ClickP4: Towards Modular Programming of P4
+    p.name-bar Yu Zhou,  Jun Bi
+    p.affliation-bar Tsinghua University
+
+    div#layout.container-fluid
+        div.row
+            div.col-md-1
+
+            div.col-md-10
+                hr
+                ul.nav.nav-tabs
+                    li.active
+                        a(href='#Switch', data-toggle='tab').panel-bar Network Features
+                    li
+                        a(href='#Info', data-toggle='tab').panel-bar Information
+                .tab-content
+                    #Switch.tab-pane.fade.in.active
+                        include includes/switch_workspace.jade
+                    #Info.tab-pane.fade
+                    include includes/info_workspace.jade
+            div.col-md-1
+
+#json
+
+block addscript
+    include includes/draw2d_js
+    include includes/myshape_js
+    script(src="/javascripts/draw2d/Application.js")
+    script(src="/javascripts/draw2d/Palette.js")
+    script(src="/javascripts/draw2d/ConnectionSelectionFeedbackPolicy.js")
+    script(src="/javascripts/draw2d/DropInterceptorPolicy.js")
+    script(src="/javascripts/draw2d/ConnectionRouter.js")
+    script(src="/javascripts/draw2d/View.js")
+    script(src="/javascripts/draw2d/Toolbar.js")
+    script(src="/javascripts/draw2d/EditEditPolicy.js")
+    //- add a script for button function
+    script(src="/javascripts/function_button.js")
+
+    script.
+        var showJSON = false;
+        $(window).load( function(){
+            app = new app.Application();
+
+            if (showJSON === true) {
+                displayJSON(app.view);
+
+                // add an event listener to the Canvas for change notifications.
+                // We just dump the current canvas document into the DIV
+                //
+                app.view.getCommandStack().addEventListener(
+                function(e){
+                    if(e.isPostChangeEvent()){
+                        displayJSON(app.view);
+                    }
+                });
+            }
+        });
+        
+        function displayJSON(canvas){
+        var writer = new draw2d.io.json.Writer();
+        writer.marshal(canvas, function(json){
+            $("#json").html("<pre>"+JSON.stringify(json,null,2)+"<pre>");
+        });
+        }

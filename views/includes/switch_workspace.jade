@@ -4,6 +4,8 @@
         div#paletteElementScroll.list-group
             //- div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d_circuit_switch_HighLow") Start
             //- span.badge#draw2d_circuit_switch_HighLow
+            // div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_start") Start
+            // span.badge#clickp4_start
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_forward") Forward
             span.badge#clickp4_forward
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_QoS") QoS
@@ -14,16 +16,58 @@
             span.badge#clickp4_l3_switch
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_vlan") VLAN
             span.badge#clickp4_vlan
+
         #paletteElementsOverlay
-    #toolbar.toolbar
-        button#FunctionButton.btn.btn-danger.btn-lg Function
-        span.group
-            span#editUndo.ion-ios-arrow-left.icon.disabled
-            span#editRedo.ion-ios-arrow-right.icon.disabled
+
+
     #draw2dCanvasWrapper.content
         #draw2dCanvas.canvas(oncontextmenu='return false;')
-        #canvas_zoom.btn-group
+        // #canvas_zoom.btn-group
             button#canvas_zoom_in.btn.highlight(type='button') ‒
             button#canvas_zoom_normal.btn.highlight(type='button') 100%
             button#canvas_zoom_out.btn.highlight(type='button') &#xFF0B
     //- img#preview.shadow
+
+    #toolbar.toolbar
+
+        div.container-fluid
+            div.row
+                div.col-md-1
+                    label.label-text L3DST
+                div.col-md-3
+                    input(tyepe='text')#L3Dst.form-control
+                div.col-md-1
+                    label.label-text L4DST
+                div.col-md-3
+                    input(tyepe='text')#L4Dst.form-control
+                div.col-md-1
+                    label.label-text Proto
+                div.col-md-3
+                    select.form-control#ProtoSelector
+                        option TCP
+                        option UDP
+                div.col-md-1
+                    label.label-text L3SRC
+                div.col-md-3
+                    input(tyepe='text')#L3Src.form-control
+                div.col-md-1
+                    label.label-text L4SRC
+                div.col-md-3
+                    input(tyepe='text')#L4Src.form-control
+                div.col-md-1
+                    label.label-text Device
+                div.col-md-3
+                    select.form-control#DeviceSelector
+                        option S1
+                        option S2
+                        option S3
+                        option S4
+                        option S5
+
+                        // span.group
+                            span#editUndo.ion-ios-arrow-left.icon.disabled
+                            span#editRedo.ion-ios-arrow-right.icon.disabled
+        button#CompileButton.btn.btn-danger.btn-md Compile
+
+
+

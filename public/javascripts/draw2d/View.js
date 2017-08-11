@@ -28,6 +28,7 @@ app.View = draw2d.Canvas.extend({
                 stroke:1.5,
                 radius:2
             });
+            c.setTargetDecorator(new draw2d.decoration.connection.ArrowDecorator());
             if(sourcePort) {
                 c.setSource(sourcePort);
                 c.setTarget(targetPort);

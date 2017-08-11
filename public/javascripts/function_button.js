@@ -1,13 +1,34 @@
 $(function() {
     // $('body').css('min-height', '0px');
-    $('#FunctionButton').click(function() {
+    $('#CompileButton').click(function() {
         var writer = new draw2d.io.json.Writer();
         writer.marshal(app.view, function(json){
             // json is description data of the canvas, consisting of topo structure and other info
-            var code = 'code generated\n' + simplifyJSON(app.view, json); // toCode(simplifyJSON(app.view, json));
-            console.log(json);
-            alert("This is where function works.");
-
+            var chain  = simplifyJSON(app.view, json); // toCode(simplifyJSON(app.view, json));
+            if (typeof(chain) == 'undefined' ) {
+                alert("Wrong policy!");
+                return;
+            }
+            console.log(chain);
+            var x = ''
+            for (i in chain) {
+                if(i == 0) {
+                    x = chain[i];
+                }
+                else {
+                    x = x+'+'+chain[i];
+                }
+            }
+            x = '|' + x;
+            x = $('#L3Dst').val() + '+' +
+                $('#L3Src').val() + '+' +
+                $('#ProtoSelector').val() + '+' +
+                $('#L4Dst').val() + '+' +
+                $('#L4Src').val() + '+' +
+                $('#DeviceSelector').val() + '+' + x;
+            // alert("This is where function works. \n" + json);
+            console.log(x)
+            $.post('compile', {'data':x});
             // e.g. preview code generated
             // $('#vhdlPreview').text(code);
             
@@ -44,15 +65,39 @@ function simplifyJSON(canvas, circuitJSON) {
             components.push(v);
         } else {
             var s = value.type + " is not supported";
-            console.log(s);
             alert(s);
         }
     });
 
-    var circuit = {};
-    circuit.components = components;
-    circuit.connections = connections;
-    return circuit;
+    var start = undefined;
+    for(i in components) {
+        start = components[i].type;
+        for (j in connections) {
+            if(connections[j].target.type == start) {
+                start = undefined;
+                break;
+            }
+        }
+    }
+    if(typeof(start) == 'undefined') {
+        alert('Start is undefined!');
+        return undefined;
+    }
+
+    var chain = []
+
+    for (i in components) {
+        chain.push(start);
+        console.log(start);
+        for (j in connections) {
+            if(connections[j].source.type == start) {
+                start = connections[j].target.type;
+                break;
+            }
+        }
+    }
+    return chain;
+
 }
 
 // Todo
