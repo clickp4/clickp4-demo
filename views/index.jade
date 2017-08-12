@@ -23,12 +23,12 @@ block content
                     li.active
                         a(href='#Switch', data-toggle='tab').panel-bar Network Features
                     li
-                        a(href='#Info', data-toggle='tab').panel-bar Information
+                        a(href='#Info', data-toggle='tab').panel-bar Topology
                 .tab-content
                     #Switch.tab-pane.fade.in.active
                         include includes/switch_workspace.jade
                     #Info.tab-pane.fade
-                    include includes/info_workspace.jade
+                        include includes/info_workspace.jade
             div.col-md-1
 
 #json
@@ -44,6 +44,7 @@ block addscript
     script(src="/javascripts/draw2d/View.js")
     script(src="/javascripts/draw2d/Toolbar.js")
     script(src="/javascripts/draw2d/EditEditPolicy.js")
+    script(src="/javascripts/jtopo-0.4.8-min.js")
     //- add a script for button function
     script(src="/javascripts/function_button.js")
 
@@ -73,3 +74,67 @@ block addscript
             $("#json").html("<pre>"+JSON.stringify(json,null,2)+"<pre>");
         });
         }
+        $(document).ready(function () {
+            var canvas = document.getElementById('Canvas');
+            var stage = new JTopo.Stage(canvas);
+            var scene = new JTopo.Scene(stage);
+
+            var s1 = new JTopo.Node("S1");
+            var s2 = new JTopo.Node("S2");
+            var s3 = new JTopo.Node("S3");
+            var s4 = new JTopo.Node("S4");
+            var s5 = new JTopo.Node("S5");
+            var h1 = new JTopo.Node("H1");
+            var h2 = new JTopo.Node("H2");
+
+            s1.setImage('/images/switch.png', true);
+            s2.setImage('/images/switch.png', true);
+            s3.setImage('/images/switch.png', true);
+            s4.setImage('/images/switch.png', true);
+            s5.setImage('/images/switch.png', true);
+            h1.setImage('/images/host.png', true);
+            h2.setImage('/images/host.png', true);
+
+            s1.font = "25px Consolas";
+            s2.font = "25px Consolas";
+            s3.font = "25px Consolas";
+            s4.font = "25px Consolas";
+            s5.font = "25px Consolas";
+            h1.font = "25px Consolas";
+            h2.font = "25px Consolas";
+
+            s1.setLocation(200, 200);
+            s2.setLocation(400, 200);
+            s3.setLocation(550, 100);
+            s4.setLocation(550, 300);
+            s5.setLocation(700, 200);
+            h2.setLocation(800, 200);
+            h1.setLocation(100, 200);
+
+            scene.add(s1);
+            scene.add(s2);
+            scene.add(s3);
+            scene.add(s4);
+            scene.add(s5);
+            scene.add(h1);
+            scene.add(h2);
+
+            linkNode(s1, h1);
+            linkNode(s1, s2);
+            linkNode(s2, s3);
+            linkNode(s2, s4);
+            linkNode(s3, s4);
+            linkNode(s3, s5);
+            linkNode(s4, s5);
+            linkNode(s5, h2);
+
+            function linkNode(a, b) {
+                var link = new JTopo.Link(a, b)
+                link.lineWidth = 5;
+                link.strokeColor = '0,200,200';
+                scene.add(link)
+                return link;
+            }
+
+
+        });

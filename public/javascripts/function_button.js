@@ -11,7 +11,7 @@ $(function() {
             }
             console.log(chain);
             var x = ''
-            for (i in chain) {
+            for (i = 0; i < chain.length; i++) {
                 if(i == 0) {
                     x = chain[i];
                 }
@@ -19,6 +19,7 @@ $(function() {
                     x = x+'+'+chain[i];
                 }
             }
+            console.log(chain.length);
             x = '|' + x;
             x = $('#L3Dst').val() + '+' +
                 $('#L3Src').val() + '+' +
@@ -49,15 +50,14 @@ function simplifyJSON(canvas, circuitJSON) {
             var v = {};
             v.type = "draw2d.Connection";
             v.id = value.id;
-            v.source = value.source;
-            v.source.type = canvas.getFigure(v.source.node).cssClass;
-            v.target = value.target;
-            v.target.type = canvas.getFigure(v.target.node).cssClass;
+            v.sourceType = canvas.getFigure(value.source.node).cssClass;
+            v.targetType = canvas.getFigure(value.target.node).cssClass;
             connections.push(v);
         } else if (value.type.startsWith("clickp4_")) {
             var v = {};
             v.type = value.type;
             v.id = value.id;
+
             v.componentInfo = 'no info'; // getComponentInfo(value);
             if (value.labels.length > 0) {
                 v.name = value.labels[0].text;
@@ -70,29 +70,32 @@ function simplifyJSON(canvas, circuitJSON) {
     });
 
     var start = undefined;
-    for(i in components) {
+    for(i = 0; i <  components.length; i++) {
         start = components[i].type;
-        for (j in connections) {
-            if(connections[j].target.type == start) {
-                start = undefined;
-                break;
+        if (connections.length > 0) {
+            for (j =0; j < connections.length; j++) {
+                if (connections[j].targetType == start) {
+                    start = undefined;
+                    break;
+                }
             }
         }
     }
     if(typeof(start) == 'undefined') {
-        alert('Start is undefined!');
+        console.log('Start is undefined!');
         return undefined;
     }
 
     var chain = []
 
-    for (i in components) {
+    for (i = 0; i < components.length; i++) {
         chain.push(start);
-        console.log(start);
-        for (j in connections) {
-            if(connections[j].source.type == start) {
-                start = connections[j].target.type;
-                break;
+        if (connections.length > 0) {
+            for (j = 0; j < connections.length; j++) {
+                if (connections[j].sourceType == start) {
+                    start = connections[j].targetType;
+                    break;
+                }
             }
         }
     }

@@ -5,9 +5,9 @@
 // Go to the Designer http://www.draw2d.org               
 // to design your own shape or download user generated    
 //                                                        
-var clickp4_QoS = draw2d.SetFigure.extend({            
+var clickp4_qos = draw2d.SetFigure.extend({
 
-   NAME: "clickp4_QoS",
+   NAME: "clickp4_qos",
 
    init:function(attr, setter, getter)
    {
@@ -205,7 +205,7 @@ var clickp4_QoS = draw2d.SetFigure.extend({
  *
  *
  */
-clickp4_QoS = clickp4_QoS.extend({
+clickp4_qos = clickp4_qos.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
