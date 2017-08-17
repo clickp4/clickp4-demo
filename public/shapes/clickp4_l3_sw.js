@@ -5,9 +5,9 @@
 // Go to the Designer http://www.draw2d.org               
 // to design your own shape or download user generated    
 //                                                        
-var clickp4_l3_switch = draw2d.SetFigure.extend({            
+var clickp4_l3_sw = draw2d.SetFigure.extend({
 
-   NAME: "clickp4_l3_switch",
+   NAME: "clickp4_l3_sw",
 
    init:function(attr, setter, getter)
    {
@@ -48,12 +48,12 @@ var clickp4_l3_switch = draw2d.SetFigure.extend({
         
         // Rectangle
         shape = this.canvas.paper.path('M0,8Q0,0 8, 0L92,0Q100,0 100, 8L100,54Q100,62 92, 62L8,62Q0,62 0, 54L0,8');
-        shape.attr({"stroke":"#303030","stroke-width":1,"fill":"#FFFFFF","dasharray":null,"opacity":1});
+        shape.attr({"stroke":"#303030","stroke-width":1,"fill":"#ff7676","dasharray":null,"opacity":1});
         shape.data("name","Rectangle");
         
         // Label
         shape = this.canvas.paper.text(0,0,'L3_SW');
-        shape.attr({"x":25,"y":31.5859375,"text-anchor":"start","text":"L3_SW","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+        shape.attr({"x":25,"y":31.5859375,"text-anchor":"start","text":"L3_SW","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"bold","stroke-width":0,"opacity":1});
         shape.data("name","Label");
         
 
@@ -205,7 +205,7 @@ var clickp4_l3_switch = draw2d.SetFigure.extend({
  *
  *
  */
-clickp4_l3_switch = clickp4_l3_switch.extend({
+clickp4_l3_sw = clickp4_l3_sw.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

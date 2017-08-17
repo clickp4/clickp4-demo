@@ -9,9 +9,14 @@ block stylesheets
 
 
 block content
-    p.title-bar ClickP4: Towards Modular Programming of P4
-    p.name-bar Yu Zhou,  Jun Bi
-    p.affliation-bar Tsinghua University
+    h1
+    div.container-fluid
+        div.row
+            div.col-md-6.col-md-offset-2
+                p.title-bar ClickP4: Towards Modular Programming of P4
+            div.col-md-2
+                p.name-bar Yu Zhou,  Jun Bi
+                p.affliation-bar Tsinghua University
 
     div#layout.container-fluid
         div.row
@@ -24,11 +29,15 @@ block content
                         a(href='#Switch', data-toggle='tab').panel-bar Network Features
                     li
                         a(href='#Info', data-toggle='tab').panel-bar Topology
+                    li
+                        a(href='#Policies', data-toggle='tab').panel-bar Policies
                 .tab-content
                     #Switch.tab-pane.fade.in.active
                         include includes/switch_workspace.jade
                     #Info.tab-pane.fade
                         include includes/info_workspace.jade
+                    #Policies.tab-pane.fade
+                        include includes/policies_workspace.jade
             div.col-md-1
 
 #json
@@ -66,7 +75,47 @@ block addscript
                     }
                 });
             }
+            displayPolicies();
+            setInterval("displayPolicies()",2000);
         });
+
+        function displayPolicies() {
+            $("#PolicyPanel").empty();
+            var table = $("<table class='table table-hover'></table>")
+            var tr = $("<tr></tr>")
+            tr.append("<th>" + "ID" + "</th>")
+            tr.append("<th>" + "Predicates" + "</th>")
+            tr.append("<th>" + "Policies" + "</th>")
+            table.append(tr)
+
+            $.get("policies",function (result) {
+                console.log(result.split("*"));
+                var policies = result.split("*");
+                for (var i = 1; i < policies.length; i++) {
+                    var policy = policies[i].split("|")[0];
+                    policy = policy.split('+')
+                    tr = $("<tr></tr>");
+                    tr.append("<td>"+ i +"</td>")
+                    tr.append("<td>" +  "  L3DST=" + policy[0] +
+                                        ",  L3SRC=" + policy[1] +
+                                        ",  Protocol=" + policy[2] +
+                                        ",  L4DST=" + policy[3] +
+                                        ",  L4DST=" + policy[4] +
+                                        ",  Device=" + policy[5] +
+                              "</td>");
+                    policy = policies[i].split("|")[1];
+                    policy = policy.split("+");
+                    console.log(policy)
+                    var p = policy[0];
+                    for (var j = 1; j < policy.length; j ++) {
+                        p  = p + " => " + policy[j]
+                    }
+                    tr.append("<td>" + p + "</td>")
+                    table.append(tr)
+                }
+            })
+            $("#PolicyPanel").append(table);
+        }
         
         function displayJSON(canvas){
         var writer = new draw2d.io.json.Writer();

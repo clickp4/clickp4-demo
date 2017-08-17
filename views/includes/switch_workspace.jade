@@ -2,23 +2,19 @@
     #navigation.palette
         //- input#filter(type='text', placeholder='Filter...', autofocus='')
         div#paletteElementScroll.list-group
-            //- div.palette_node_element.draw2d_droppable.list-group-item(data-shape="draw2d_circuit_switch_HighLow") Start
-            //- span.badge#draw2d_circuit_switch_HighLow
-            // div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_start") Start
-            // span.badge#clickp4_start
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_forward") Forward
-            span.badge#clickp4_forward
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_qos") QoS
-            span.badge#clickp4_qos
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l2_switch") L2_SW
-            span.badge#clickp4_l2_switch
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l3_switch") L3_SW
-            span.badge#clickp4_l3_switch
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l2_sw") L2_SW
+            span.badge#clickp4_l2_sw
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_nat") NAT
+            span.badge#clickp4_nat
             div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_vlan") VLAN
             span.badge#clickp4_vlan
-
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l3_sw") L3_SW
+            span.badge#clickp4_l3_sw
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_acl") ACL
+            span.badge#clickp4_acl
+            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_qos") QoS
+            span.badge#clickp4_qos
         #paletteElementsOverlay
-
 
     #draw2dCanvasWrapper.content
         #draw2dCanvas.canvas(oncontextmenu='return false;')
@@ -29,34 +25,35 @@
     //- img#preview.shadow
 
     #toolbar.toolbar
-
         div.container-fluid
             div.row
                 div.col-md-1
                     label.label-text L3DST
-                div.col-md-3
+                div.col-md-2
                     input(tyepe='text')#L3Dst.form-control
                 div.col-md-1
                     label.label-text L4DST
-                div.col-md-3
+                div.col-md-2
                     input(tyepe='text')#L4Dst.form-control
                 div.col-md-1
                     label.label-text Proto
-                div.col-md-3
+                div.col-md-2
                     select.form-control#ProtoSelector
                         option TCP
                         option UDP
+                div.col-md-3
+                    button#CompileButton.btn.btn-danger.btn-md Compile
                 div.col-md-1
                     label.label-text L3SRC
-                div.col-md-3
+                div.col-md-2
                     input(tyepe='text')#L3Src.form-control
                 div.col-md-1
                     label.label-text L4SRC
-                div.col-md-3
+                div.col-md-2
                     input(tyepe='text')#L4Src.form-control
                 div.col-md-1
                     label.label-text Device
-                div.col-md-3
+                div.col-md-2
                     select.form-control#DeviceSelector
                         option S1
                         option S2
@@ -67,7 +64,7 @@
                         // span.group
                             span#editUndo.ion-ios-arrow-left.icon.disabled
                             span#editRedo.ion-ios-arrow-right.icon.disabled
-        button#CompileButton.btn.btn-danger.btn-md Compile
+
 
 
 

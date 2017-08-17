@@ -48,12 +48,12 @@ var clickp4_qos = draw2d.SetFigure.extend({
         
         // Rectangle
         shape = this.canvas.paper.path('M0,8Q0,0 8, 0L92,0Q100,0 100, 8L100,54Q100,62 92, 62L8,62Q0,62 0, 54L0,8');
-        shape.attr({"stroke":"#303030","stroke-width":1,"fill":"#FFFFFF","dasharray":null,"opacity":1});
+        shape.attr({"stroke":"#303030","stroke-width":1,"fill":"#9f5cff","dasharray":null,"opacity":1});
         shape.data("name","Rectangle");
         
         // Label
         shape = this.canvas.paper.text(0,0,'QoS');
-        shape.attr({"x":33,"y":31.5859375,"text-anchor":"start","text":"QoS","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+        shape.attr({"x":33,"y":31.5859375,"text-anchor":"start","text":"QoS","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"bold","stroke-width":0,"opacity":1});
         shape.data("name","Label");
         
 

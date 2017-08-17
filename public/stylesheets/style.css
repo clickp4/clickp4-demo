@@ -34,3 +34,29 @@
 .canvas-bdg {
     background-color: #95A5A6;
 }
+
+.nat-text {
+    color: #677bff;
+}
+
+.acl-text {
+    color: #7fff72;
+}
+
+.l3-text {
+    color: #ff7676;
+}
+
+.qos-text {
+    color: #9f5cff;
+}
+
+.vlan-text {
+    color: #f1ff6e;
+}
+
+
+.policy-panel {
+    width: 100%;
+    height: 500px;
+}
