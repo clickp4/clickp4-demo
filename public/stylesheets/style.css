@@ -32,7 +32,7 @@
 }
 
 .canvas-bdg {
-    background-color: #95A5A6;
+    background-color: #ffffff;
 }
 
 .nat-text {
@@ -59,4 +59,74 @@
 .policy-panel {
     width: 100%;
     height: 500px;
+}
+
+.predicate-toolbar {
+    top: 10px;
+    margin-left: 50px;
+    padding: 20px;
+    width: 100%;
+}
+
+.manipulate-box {
+    height: 807px;
+}
+
+.divbox {
+    border-right:3px solid #8292a7;
+    border-left:3px solid #8292a7;
+    border-top:3px solid #8292a7;
+    border-bottom:3px solid #8292a7;
+    border-radius: 10px;
+}
+
+.nfbox {
+    border-right:2px solid #6863ea;
+    border-left:2px solid #6863ea;
+    border-top:2px solid #6863ea;
+    border-bottom:2px solid #6863ea;
+}
+
+.policy-box {
+    margin-top: 10px;
+    background-color: #fffff9;
+    height: 540px;
+    padding: 5px;
+}
+
+.section-title {
+    font-weight: bolder;
+    font-size: x-large;
+    padding: 10px 0 0 10px;
+    color: #0f4baa;
+}
+
+.subsection-title {
+    align-content: center;
+    font-weight: bolder;
+    font-size: large;
+    color: #ea0909;
+}
+
+
+.match-title {
+    padding: 30px 0;
+}
+
+.compile-btn {
+    margin-top: 12px;
+    height: 67px;
+}
+
+.inputbox {
+    border-right:3px solid #ea0909;
+    border-left:3px solid #ea0909;
+    border-top:3px solid #ea0909;
+    border-bottom:3px solid #ea0909;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.topology-box {
+    background-color: #ffffff;
 }

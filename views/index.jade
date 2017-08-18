@@ -17,28 +17,96 @@ block content
             div.col-md-2
                 p.name-bar Yu Zhou,  Jun Bi
                 p.affliation-bar Tsinghua University
+    hr(style=" height:1px; border:none; border-top:2px dotted #185598;")
 
-    div#layout.container-fluid
-        div.row
-            div.col-md-1
+    // div#layout.container-fluid
+        ul.nav.nav-tabs
+            li.active
+                a(href='#Switch', data-toggle='tab').panel-bar Network Features
+        .tab-content
+            #Switch.tab-pane.fade.in.active
+                include includes/switch_workspace.jade
+    .workspace.active
+        div.container-fluid
+            div.row
+                div.col-md-8.divbox.manipulate-box
+                    p.section-title Dashboard
+                    div.row.predicate-toolbar
+                        div.col-md-2
+                            p.subsection-title.match-title Match Fields
+                        div.col-md-9.inputbox
+                            div.row
+                                div.col-md-1
+                                    label.label-text L3DST
+                                div.col-md-3
+                                    input(tyepe='text')#L3Dst.form-control
+                                div.col-md-1
+                                    label.label-text L4DST
+                                div.col-md-3
+                                    input(tyepe='text')#L4Dst.form-control
+                                div.col-md-1
+                                    label.label-text Proto
+                                div.col-md-3
+                                    select.form-control#ProtoSelector
+                                        option TCP
+                                        option UDP
+                                div.col-md-1
+                                    label.label-text L3SRC
+                                div.col-md-3
+                                    input(tyepe='text')#L3Src.form-control
+                                div.col-md-1
+                                    label.label-text L4SRC
+                                div.col-md-3
+                                    input(tyepe='text')#L4Src.form-control
+                                div.col-md-1
+                                    label.label-text Device
+                                div.col-md-3
+                                    select.form-control#DeviceSelector
+                                        option S1
+                                        option S2
+                                        option S3
+                                        option S4
+                                        option S5
+                        div.col-md-1
+                            button#CompileButton.btn.btn-danger.btn-lg.compile-btn Compile
+                    div.row
 
-            div.col-md-10
-                hr
-                ul.nav.nav-tabs
-                    li.active
-                        a(href='#Switch', data-toggle='tab').panel-bar Network Features
-                    li
-                        a(href='#Info', data-toggle='tab').panel-bar Topology
-                    li
-                        a(href='#Policies', data-toggle='tab').panel-bar Policies
-                .tab-content
-                    #Switch.tab-pane.fade.in.active
-                        include includes/switch_workspace.jade
-                    #Info.tab-pane.fade
-                        include includes/info_workspace.jade
-                    #Policies.tab-pane.fade
-                        include includes/policies_workspace.jade
-            div.col-md-1
+
+                        #navigation.palette
+                            //- input#filter(type='text', placeholder='Filter...', autofocus='')
+                            div#paletteElementScroll.list-group.nfbox
+                                h1
+                                p.subsection-title Network Features
+                                div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l2_sw") L2_SW
+                                span.badge#clickp4_l2_sw
+                                div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_nat") NAT
+                                span.badge#clickp4_nat
+                                div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_vlan") VLAN
+                                span.badge#clickp4_vlan
+                                div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l3_sw") L3_SW
+                                span.badge#clickp4_l3_sw
+                                div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_acl") ACL
+                                span.badge#clickp4_acl
+                                div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_qos") QoS
+                                span.badge#clickp4_qos
+                            #paletteElementsOverlay
+
+                        #draw2dCanvasWrapper.content
+                            #draw2dCanvas.canvas(oncontextmenu='return false;')
+
+                div.col-md-4
+                    div.divbox.topology-box
+                        p.section-title Topology
+                        div
+                            canvas(width=605 height=200 id='Canvas').canvas-bdg
+
+                    div.divbox.policy-box
+                        p.section-title Policies
+                        div#PolicyPanel.policy-panel
+
+
+
+
 
 #json
 
@@ -81,10 +149,10 @@ block addscript
 
         function displayPolicies() {
             $("#PolicyPanel").empty();
-            var table = $("<table class='table table-hover'></table>")
+            var table = $("<table class='table table-hover table-bordered table-striped'></table>")
             var tr = $("<tr></tr>")
             tr.append("<th>" + "ID" + "</th>")
-            tr.append("<th>" + "Predicates" + "</th>")
+            tr.append("<th>" + "Match Fields" + "</th>")
             tr.append("<th>" + "Policies" + "</th>")
             table.append(tr)
 
@@ -136,29 +204,37 @@ block addscript
             var h1 = new JTopo.Node("H1");
             var h2 = new JTopo.Node("H2");
 
-            s1.setImage('/images/switch.png', true);
-            s2.setImage('/images/switch.png', true);
-            s3.setImage('/images/switch.png', true);
-            s4.setImage('/images/switch.png', true);
-            s5.setImage('/images/switch.png', true);
-            h1.setImage('/images/host.png', true);
-            h2.setImage('/images/host.png', true);
+            s1.setImage('/images/switch.png', false);
+            s2.setImage('/images/switch.png', false);
+            s3.setImage('/images/switch.png', false);
+            s4.setImage('/images/switch.png', false);
+            s5.setImage('/images/switch.png', false);
+            h1.setImage('/images/host.png', false);
+            h2.setImage('/images/host.png', false);
 
-            s1.font = "25px Consolas";
-            s2.font = "25px Consolas";
-            s3.font = "25px Consolas";
-            s4.font = "25px Consolas";
-            s5.font = "25px Consolas";
-            h1.font = "25px Consolas";
-            h2.font = "25px Consolas";
+            s1.font = "20px Consolas";
+            s1.fontColor = "0,0,0"
+            s2.font = "20px Consolas";
+            s2.fontColor = "0,0,0"
+            s3.font = "20px Consolas";
+            s3.fontColor = "0,0,0"
+            s4.font = "20px Consolas";
+            s4.fontColor = "0,0,0"
+            s5.font = "20px Consolas";
+            s5.fontColor = "0,0,0"
+            h1.font = "20px Consolas";
+            h1.fontColor = "0,0,0"
+            h2.font = "20px Consolas";
+            h2.fontColor = "0,0,0"
 
-            s1.setLocation(200, 200);
-            s2.setLocation(400, 200);
-            s3.setLocation(550, 100);
-            s4.setLocation(550, 300);
-            s5.setLocation(700, 200);
-            h2.setLocation(800, 200);
-            h1.setLocation(100, 200);
+
+            s1.setLocation(100, 125);
+            s2.setLocation(200, 125);
+            s3.setLocation(300, 125);
+            s4.setLocation(300, 50);
+            s5.setLocation(400, 125);
+            h2.setLocation(525, 125);
+            h1.setLocation(25, 125);
 
             scene.add(s1);
             scene.add(s2);
@@ -179,11 +255,29 @@ block addscript
 
             function linkNode(a, b) {
                 var link = new JTopo.Link(a, b)
-                link.lineWidth = 5;
-                link.strokeColor = '0,200,200';
-                scene.add(link)
+                link.lineWidth = 3;
+                link.strokeColor = '0,0,0';
+                scene.add(link);
+                link.textOffsetY = 3;
                 return link;
             }
 
+            setInterval(function () {
+                $.get("s1", function (result) {
+                    s1.alarm = result;
+                })
+                $.get("s2", function (result) {
+                    s2.alarm = result;
+                })
+                $.get("s3", function (result) {
+                    s3.alarm = result;
+                })
+                $.get("s4", function (result) {
+                    s4.alarm = result;
+                })
+                $.get("s5", function (result) {
+                    s5.alarm = result;
+                })
+            }, 2000);
 
         });

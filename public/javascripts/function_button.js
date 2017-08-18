@@ -68,7 +68,7 @@ function simplifyJSON(canvas, circuitJSON) {
             alert(s);
         }
     });
-
+    console.log(connections);
     var start = undefined;
     for(i = 0; i <  components.length; i++) {
         start = components[i].type;

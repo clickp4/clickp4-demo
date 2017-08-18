@@ -40,4 +40,38 @@ router.get('/policies', function (req, res, next) {
 });
 
 
+var c = 0;
+
+router.get('/s1', function (req, res, next) {
+    var str = "" + c + " Kbps";
+    c = c + 1;
+    res.send(str)
+});
+
+router.get('/s2', function (req, res, next) {
+    var str = "" + c + " Kbps";
+    c = c + 1;
+    res.send(str)
+});
+
+router.get('/s3', function (req, res, next) {
+    var str = "" + c + " Kbps";
+    c = c + 1;
+    res.send(str)
+});
+
+router.get('/s4', function (req, res, next) {
+    var str = "" + c + " Kbps";
+    c = c + 1;
+    res.send(str)
+});
+
+router.get('/s5', function (req, res, next) {
+    var str = "" + c + " Kbps";
+    c = c + 1;
+    res.send(str)
+});
+
+
+
 module.exports = router;

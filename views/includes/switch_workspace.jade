@@ -1,65 +1,68 @@
 .workspace
-    #navigation.palette
-        //- input#filter(type='text', placeholder='Filter...', autofocus='')
-        div#paletteElementScroll.list-group
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l2_sw") L2_SW
-            span.badge#clickp4_l2_sw
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_nat") NAT
-            span.badge#clickp4_nat
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_vlan") VLAN
-            span.badge#clickp4_vlan
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l3_sw") L3_SW
-            span.badge#clickp4_l3_sw
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_acl") ACL
-            span.badge#clickp4_acl
-            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_qos") QoS
-            span.badge#clickp4_qos
-        #paletteElementsOverlay
+    div.container-fluid
+        div.row
+            div.col-md-8
+                div.row.predicate-toolbar
+                    div.row.col-md-9
+                        div.row
+                            div.col-md-1
+                                label.label-text L3DST
+                            div.col-md-3
+                                input(tyepe='text')#L3Dst.form-control
+                            div.col-md-1
+                                label.label-text L4DST
+                            div.col-md-3
+                                input(tyepe='text')#L4Dst.form-control
+                            div.col-md-1
+                                label.label-text Proto
+                            div.col-md-3
+                                select.form-control#ProtoSelector
+                                    option TCP
+                                    option UDP
+                            div.col-md-1
+                                label.label-text L3SRC
+                            div.col-md-3
+                                input(tyepe='text')#L3Src.form-control
+                            div.col-md-1
+                                label.label-text L4SRC
+                            div.col-md-3
+                                input(tyepe='text')#L4Src.form-control
+                            div.col-md-1
+                                label.label-text Device
+                            div.col-md-3
+                                select.form-control#DeviceSelector
+                                    option S1
+                                    option S2
+                                    option S3
+                                    option S4
+                                    option S5
+                    div.col-md-3
+                        button#CompileButton.btn.btn-danger.btn-lg Compile
+                div.row
+                    #navigation.palette
+                        //- input#filter(type='text', placeholder='Filter...', autofocus='')
+                        div#paletteElementScroll.list-group
+                            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l2_sw") L2_SW
+                            span.badge#clickp4_l2_sw
+                            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_nat") NAT
+                            span.badge#clickp4_nat
+                            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_vlan") VLAN
+                            span.badge#clickp4_vlan
+                            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_l3_sw") L3_SW
+                            span.badge#clickp4_l3_sw
+                            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_acl") ACL
+                            span.badge#clickp4_acl
+                            div.palette_node_element.draw2d_droppable.list-group-item(data-shape="clickp4_qos") QoS
+                            span.badge#clickp4_qos
+                        #paletteElementsOverlay
 
-    #draw2dCanvasWrapper.content
-        #draw2dCanvas.canvas(oncontextmenu='return false;')
-        // #canvas_zoom.btn-group
-            button#canvas_zoom_in.btn.highlight(type='button') ‒
-            button#canvas_zoom_normal.btn.highlight(type='button') 100%
-            button#canvas_zoom_out.btn.highlight(type='button') &#xFF0B
-    //- img#preview.shadow
+                    #draw2dCanvasWrapper.content
+                        #draw2dCanvas.canvas(oncontextmenu='return false;')
 
-    #toolbar.toolbar
-        div.container-fluid
-            div.row
-                div.col-md-1
-                    label.label-text L3DST
-                div.col-md-2
-                    input(tyepe='text')#L3Dst.form-control
-                div.col-md-1
-                    label.label-text L4DST
-                div.col-md-2
-                    input(tyepe='text')#L4Dst.form-control
-                div.col-md-1
-                    label.label-text Proto
-                div.col-md-2
-                    select.form-control#ProtoSelector
-                        option TCP
-                        option UDP
-                div.col-md-3
-                    button#CompileButton.btn.btn-danger.btn-md Compile
-                div.col-md-1
-                    label.label-text L3SRC
-                div.col-md-2
-                    input(tyepe='text')#L3Src.form-control
-                div.col-md-1
-                    label.label-text L4SRC
-                div.col-md-2
-                    input(tyepe='text')#L4Src.form-control
-                div.col-md-1
-                    label.label-text Device
-                div.col-md-2
-                    select.form-control#DeviceSelector
-                        option S1
-                        option S2
-                        option S3
-                        option S4
-                        option S5
+            div.col-md-4
+                div.container-fluid.center-block
+                    canvas(width=600 height=200 id='Canvas').canvas-bdg
+                div#PolicyPanel.policy-panel
 
                         // span.group
                             span#editUndo.ion-ios-arrow-left.icon.disabled
